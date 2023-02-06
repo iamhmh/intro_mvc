@@ -7,6 +7,6 @@
     <title>Home Boy</title>
 </head>
 <body>
-    <?= $string; ?>
+    
 </body>
 </html>

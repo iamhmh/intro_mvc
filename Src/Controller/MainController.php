@@ -4,7 +4,7 @@ class MainController extends Controller
 {
     public function view($nom)
     {
-        $this->vars['string'] = 'Hello from the otherside';
+        $this->set('nom', $nom); // 'nom' is the key, $nom is the value
 
         $this->render('index');
     }
