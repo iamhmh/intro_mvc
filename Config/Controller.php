@@ -19,4 +19,9 @@ class Controller
 
         require $view;
     }
+
+    public function set($key, $value)
+    {
+        $this->vars[$key] = $value;
+    }
 }
