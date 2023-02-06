@@ -20,7 +20,7 @@ class Controller
         require $view;
     }
 
-    public function set($key, $value)
+    public function set($key, $value = null)
     {
         $this->vars[$key] = $value;
     }
