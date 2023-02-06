@@ -23,7 +23,6 @@ class Dispatcher
         $name = ucfirst($this->request->controller) . 'Controller';
         $file = __ROOT__ . __DS__ . 'Src/Controller' . __DS__ . $name . '.php';
         require $file;
-
         return new $name($this->request);
     }
 }

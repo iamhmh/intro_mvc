@@ -4,6 +4,6 @@ class MainController extends Controller
 {
     public function view($nom)
     {
-        echo "La page demandée est : " . $nom;
+        $this->render('index');
     }
 }
