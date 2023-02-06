@@ -15,7 +15,14 @@ class Dispatcher
 
         $controller = $this->loadController();
 
+        if(!in_array($this->request->action, get_class_methods($controller)))
+        {
+            $this->error('Le controller ' . $this->request->controller . ' n\'a pas de méthode ' . $this->request->action);
+        }
+
         call_user_func_array(array($controller, $this->request->action), $this->request->params);
+
+        $controller->render($this->request->action);
     }
 
     function loadController()
@@ -24,5 +31,12 @@ class Dispatcher
         $file = __ROOT__ . __DS__ . 'Src/Controller' . __DS__ . $name . '.php';
         require $file;
         return new $name($this->request);
+    }
+
+    function error($message)
+    {
+        $controller = new Controller($this->request);
+        $controller->render('/error/404');
+        die();
     }
 }

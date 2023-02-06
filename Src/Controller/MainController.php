@@ -2,6 +2,11 @@
 
 class MainController extends Controller
 {
+    public function index()
+    {
+        $this->render('index');
+    }
+    /*
     public function view($nom)
     {
         $this->set(array(
@@ -11,4 +16,5 @@ class MainController extends Controller
 
         $this->render('index');
     }
+    */
 }
