@@ -3,6 +3,8 @@
 class Controller
 {
     public $request;
+    public $vars = array();
+
     public function __construct($request)
     {
         $this->request = $request;
@@ -10,8 +12,12 @@ class Controller
 
     public function render($view)
     {
+
+        extract($this->vars);
+
         $view = __ROOT__ . __DS__ . 'Template' . __DS__ . $this->request->controller . __DS__ . $view . '.php';
 
-        echo $view;
+        require $view;
+        //die($view);
     }
 }
