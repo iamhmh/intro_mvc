@@ -22,6 +22,15 @@ class Controller
 
     public function set($key, $value = null)
     {
-        $this->vars[$key] = $value;
+        
+
+        if(is_array($key))
+        {
+            $this->vars += $key;
+        }
+        else 
+        {
+            $this->vars[$key] = $value;
+        }
     }
 }

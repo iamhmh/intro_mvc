@@ -7,6 +7,10 @@
     <title>Home Boy</title>
 </head>
 <body>
-    
+    <?php
+        echo $phrase;
+        echo '<br>';
+        echo $nom;
+    ?>
 </body>
 </html>
