@@ -18,6 +18,5 @@ class Controller
         $view = __ROOT__ . __DS__ . 'Template' . __DS__ . $this->request->controller . __DS__ . $view . '.php';
 
         require $view;
-        //die($view);
     }
 }
