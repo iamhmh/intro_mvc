@@ -2,19 +2,8 @@
 
 class MainController extends Controller
 {
-    public function index()
+    public function view()
     {
-        $this->render('index');
+        $this->loadModel('Post');
     }
-    /*
-    public function view($nom)
-    {
-        $this->set(array(
-            'phrase' => 'Yo yo yo, \'ssup',
-            'nom' => 'John Doe'
-        ));
-
-        $this->render('index');
-    }
-    */
 }
