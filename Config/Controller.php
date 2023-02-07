@@ -57,10 +57,15 @@ class Controller
 
     function loadModel($name)
     {
-        $file = __ROOT__ . __DS__ . 'Src' . __DS__ . 'Model' . __DS__ . $name . '.php';
-
-        require_once($file);
-
-        $this->$name = new $name();
+        if(!isset($this->$name))
+        {
+            $file = __ROOT__ . __DS__ . 'Src' . __DS__ . 'Model' . __DS__ . $name . '.php';
+            require_once($file);
+            $this->$name = new $name();
+        }
+        else
+        {
+            echo 'Le model n`\'existe pas';
+        }
     }
 }
