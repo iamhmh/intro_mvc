@@ -6,7 +6,7 @@ class MainController extends Controller
     {
         $this->loadModel('Post');
         $Post = $this->Post->findFirst(array(
-            'conditions' => 'id = '.$id
+            'conditions' => ['id' => $id]
             )
         );
 
