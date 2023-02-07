@@ -4,13 +4,15 @@ class MainController extends Controller
 {
     public function view($id)
     {
-        
         $this->loadModel('Post');
         $Post = $this->Post->findFirst(array(
-            'conditions' => 'id = 2'
+            'conditions' => 'id = '.$id
             )
         );
-        //print_r($Post);
+
+        if(empty($Post)) {
+            $this->e404('Error');
+        }
 
         $this->set('Post', $Post);
     }
