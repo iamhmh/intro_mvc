@@ -51,8 +51,10 @@ class Model
             } else {
                 $cond = array();
                 foreach ($req['conditions'] as $k => $v) {
-                    if (!is_numeric($v)) {
-                        $v = '"' . $v . '"';
+                    if (!is_numeric($v)) 
+                    {
+                        //$this->db->quote($v);
+                        $v = $this->db->quote($v);
                     }
                     $cond[] = "$k=$v";
                 }

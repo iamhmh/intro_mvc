@@ -5,15 +5,19 @@ class MainController extends Controller
     public function view($id)
     {
         $this->loadModel('Post');
-        $Post = $this->Post->findFirst(array(
-            'conditions' => ['id' => $id]
+        $d['page'] = $this->Post->findFirst(array(
+            'conditions' => ['id' => $id, 'type' => 'page']
             )
         );
 
-        if(empty($Post)) {
+        if(empty($d['page'])) 
+        {
             $this->e404('Error');
         }
-
-        $this->set('Post', $Post);
+        $d['pages'] = $this->Post->find(array(
+            'conditions' => ['type' => 'page']
+            )
+        );
+        $this->set($d);
     }
 }
