@@ -6,4 +6,14 @@ class Model
     {
         
     }
+
+    public function find($req)
+    {
+        $sql = 'SELECT * FROM posts ';
+        
+        if(isset($req['conditions']))
+        {
+            
+        }
+    }
 }
