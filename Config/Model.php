@@ -3,10 +3,10 @@
 class Model
 {
     static $connections = array();
-
     public $conf = 'default';
     public $table = false;
     public $db;
+    public $primaryKey = 'id';
     public function __construct()
     {
         // initialisation de quelques variables pour nos tables
@@ -46,7 +46,24 @@ class Model
     public function find($req)
     {
 
-        $sql = 'SELECT * FROM ' . $this->table . ' AS ' . get_class($this) . '';
+        //$sql = 'SELECT * FROM ' . $this->table . ' AS ' . get_class($this) . '';
+        $sql = ' SELECT ';
+        if(isset($req['fields']))
+        {
+            if(is_array($req['fields']))
+            {
+                $sql .= implode(' , ', $req['fields']);
+            }
+            else
+            {
+                $sql .= $req['fields'];
+            }
+        }
+        else
+        {
+            $sql .= ' * ';
+        }
+        $sql .= ' FROM ' . $this->table . ' AS ' . get_class($this) . '';
         if (isset($req['conditions'])) {
             $sql .= ' WHERE ';
             if (!is_array($req['conditions'])) {
@@ -73,5 +90,14 @@ class Model
     public function findFirst($req)
     {
         return current($this->find($req));
+    }
+
+    public function findCount($conditions)
+    {
+        $res = $this->findFirst(array(
+            'fields' => ' COUNT( ' . $this->primaryKey . ' ) AS count',
+            'conditions' => $conditions
+        ));
+        return $res->count;
     }
 }
