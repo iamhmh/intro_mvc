@@ -81,6 +81,10 @@ class Model
                 $sql .= implode(' AND ', $cond);
             }
         }
+        if(isset($req['limit']))
+        {
+            $sql .= ' LIMIT ' . $req['limit'];
+        }
         $pre = $this->db->prepare($sql);
         $pre->execute();
 
@@ -98,6 +102,7 @@ class Model
             'fields' => ' COUNT( ' . $this->primaryKey . ' ) AS count',
             'conditions' => $conditions
         ));
+        
         return $res->count;
     }
 }
