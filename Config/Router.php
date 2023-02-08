@@ -2,6 +2,8 @@
 
 class Router
 {
+    static $routes = [];
+    
    /**
     * Parse l'URL
     * @param string $url
