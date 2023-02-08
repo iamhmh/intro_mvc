@@ -56,12 +56,35 @@ class Router
         $r['origin'] = str_replace(':action', '(?P<action>([a-z0-9\-]+))', $url);
         $r['origin'] = preg_replace('/([a-z0-9]+):([^\/]+)/', '${1}:(?P<${1}>${2})', $r['origin']);
         $r['origin'] = '/^' . str_replace('/', '\/', $r['origin']) . '(?P<args>\/?.*)$/';
-
         $params = explode('/', $url);
         foreach($params as $k => $v)
         {
-            
+            if(strpos($v, ':'))
+            {
+                $p = explode(':', $v);
+                $r['params'][$p[0]] = $p[1];
+            }
+            else
+            {
+                if($k == 0)
+                {
+                    $r['controller'] = $v;
+                }
+                else if($k == 1)
+                {
+                    $r['action'] = $v;
+                }
+            }
         }
+        $r['catcher'] = $redir;
+        $r['catcher'] = str_replace(':action','(?P<action>([a-z0-9-]+))',$r['catcher']);
+        foreach($r['params'] as $k => $v)
+        {
+            $r['params'] = str_replace(":$k","(?P<$k>$v)",$r['catcher']);
+        }
+        $r['catcher'] = '/^'.str_replace('/','/',$r['catcher']).'(?P<args>/?.*)$/';
+
+        self::$routes = $r;
         dd($r);
     }
 }
