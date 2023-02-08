@@ -53,9 +53,15 @@ class Router
         $r['params'] = [];
         $r['url'] = $url;
         $r['redir'] = $redir;
-
         $r['origin'] = str_replace(':action', '(?P<action>([a-z0-9\-]+))', $url);
         $r['origin'] = preg_replace('/([a-z0-9]+):([^\/]+)/', '${1}:(?P<${1}>${2})', $r['origin']);
         $r['origin'] = '/^' . str_replace('/', '\/', $r['origin']) . '(?P<args>\/?.*)$/';
+
+        $params = explode('/', $url);
+        foreach($params as $k => $v)
+        {
+            
+        }
+        dd($r);
     }
 }
