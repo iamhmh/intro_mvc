@@ -85,6 +85,11 @@ class Router
         $r['catcher'] = '/^'.str_replace('/','/',$r['catcher']).'(?P<args>/?.*)$/';
 
         self::$routes = $r;
-        dd($r);
+    }
+
+    static function url($url)
+    {
+        
+        dd($url);
     }
 }
