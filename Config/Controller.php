@@ -88,6 +88,6 @@ class Controller
 
         $c = new $controller();
 
-        return $c->$action;
+        return $c->$action();
     }
 }

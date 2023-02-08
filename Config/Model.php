@@ -9,13 +9,21 @@ class Model
     public $db;
     public function __construct()
     {
+        // initialisation de quelques variables pour nos tables
+        if ($this->table === false) 
+        {
+            $this->table = strtolower(get_class($this)) . 's';
+        }
 
         $conf = ConnexionDB::$database[$this->conf];
+
         if (isset(Model::$connections[$this->conf])) {
             $this->db = Model::$connections[$this->conf];
             return true;
         }
-        try {
+        
+        try 
+        {
             $pdo = new PDO(
                 'mysql:host=' . $conf['host'] . ';dbname=' . $conf['database'] . ';',
                 $conf['user'],
@@ -32,11 +40,6 @@ class Model
             } else {
                 die('Impossible de se connecter à la Base de données');
             }
-        }
-        // initialisation de quelques variables pour nos tables
-        if ($this->table === false) {
-            $this->table = strtolower(get_class($this)) . 's';
-            // faire une regex permettant de synchroniser notre classe avec notre table
         }
     }
 

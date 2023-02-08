@@ -6,7 +6,9 @@ class MainController extends Controller
     {
         $this->loadModel('Post');
         $d['page'] = $this->Post->findFirst(array(
-            'conditions' => ['id' => $id, 'type' => 'page']
+            'conditions' => ['id' => $id, 
+                            'type' => 'page',
+                            'online' => 1]
             )
         );
 
@@ -20,4 +22,5 @@ class MainController extends Controller
         );
         $this->set($d);
     }
+    
 }
