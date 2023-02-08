@@ -9,9 +9,12 @@ class Controller
 
     private $rendered = false;
 
-    public function __construct($request)
+    public function __construct($request = null)
     {
-        $this->request = $request;
+        if($request)
+        {
+           $this->request = $request; 
+        }
     }
 
     public function render($view)
@@ -75,5 +78,16 @@ class Controller
         $this->set('message', $message);
         $this->render('/error/404');
         die();
+    }
+
+    function request($controller, $action)
+    {
+        $controller .= 'Controller';
+
+        require __ROOT__ . __DS__ . 'Src' . __DS__ . 'Controller' . __DS__ . $controller . '.php';
+
+        $c = new $controller();
+
+        return $c->$action;
     }
 }
