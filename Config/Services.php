@@ -1,5 +1,6 @@
 <?php
 
+include 'dd.php';
 include 'ConnexionDB.php';
 include 'Request.php';
 include 'Router.php';
