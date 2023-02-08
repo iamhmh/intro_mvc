@@ -79,7 +79,21 @@ class Router{
 	}
     static function url($url)
     {
-        
-        dd($url);
+        foreach(self::$routes as $v)
+		{
+			if(preg_match($v['origin'], $url, $match))
+			{
+				foreach($match as $k => $w)
+				{
+					if(!is_numeric($k))
+					{
+						$v['redir'] = str_replace(":$k", $w, $v['redir']);
+					}
+				}
+				return __BASE_URL__ . str_replace('//', '/', '/' . $v['redir'] . $match['args']);
+			}
+		}
+		return __BASE_URL__ . '/' . $url;
+        //dd($url);
     }
 }
