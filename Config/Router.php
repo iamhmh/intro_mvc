@@ -7,7 +7,7 @@ class Router{
 	/**
 	* Permet de parser une url
 	* @param $url Url à parser
-	* @return tableau contenant les paramètres
+	* 
 	**/
 	static function parse($url,$request){
 		$url = trim($url,'/'); 
