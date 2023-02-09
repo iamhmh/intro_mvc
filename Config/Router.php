@@ -1,13 +1,13 @@
 <?php
-class Router
-{
+class Router{
+	
 
 	static $routes = array(); 
 	
 	/**
 	* Permet de parser une url
 	* @param $url Url à parser
-	* 
+	* @return tableau contenant les paramètres
 	**/
 	static function parse($url,$request){
 		$url = trim($url,'/'); 
@@ -77,22 +77,21 @@ class Router
 
 		self::$routes[] = $r; 
 	}
-    static function url($url)
-    {
-        foreach(self::$routes as $v)
-		{
-			if(preg_match($v['origin'], $url, $match))
-			{
-				foreach($match as $k => $w)
-				{
-					if(!is_numeric($k))
-					{
-						$v['redir'] = str_replace(":$k", $w, $v['redir']);
+
+	/**
+	* 
+	**/
+	static function url($url){
+		foreach(self::$routes as $v){
+			if(preg_match($v['origin'],$url,$match)){
+				foreach($match as $k=>$w){
+					if(!is_numeric($k)){
+						$v['redir'] = str_replace(":$k",$w,$v['redir']); 
 					}
 				}
-				return __BASE_URL__ . str_replace('//', '/', '/' . $v['redir'] . $match['args']);
+				return __BASE_URL__.str_replace('//','/','/'.$v['redir']).$match['args']; 
 			}
 		}
-		return __BASE_URL__ . '/' . $url;
-    }
+		return __BASE_URL__.'/'.$url; 
+	}
 }

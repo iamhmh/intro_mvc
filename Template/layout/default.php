@@ -14,7 +14,7 @@
               <ul class="nav"> 
                 <?php $pagesMenu = $this->request('Pages','getMenu'); ?>
                 <?php foreach($pagesMenu as $p): ?>
-                    <li><a href="<?php echo __BASE_URL__ .'/main/view/'.$p->id; ?>" title="<?php echo $p->name; ?>"><?php echo $p->name; ?></a></li> 
+                    <li><a href="<?php echo __BASE_URL__.'pages/view/'.$p->id; ?>" title="<?php echo $p->name; ?>"><?php echo $p->name; ?></a></li> 
                 <?php endforeach; ?>
                 <li><a href="<?php echo Router::url('posts/index'); ?>">Actualité</a></li>
               </ul>

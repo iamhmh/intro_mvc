@@ -1,7 +1,7 @@
-<?php
-function dd($var){
+<?php 
+function debug($var){
 
-	if(ConnexionDB::$debug>0){
+	if(Conf::$debug>0){
 		$debug = debug_backtrace(); 
 		echo '<p>&nbsp;</p><p><a href="#" onclick="$(this).parent().next(\'ol\').slideToggle(); return false;"><strong>'.$debug[0]['file'].' </strong> l.'.$debug[0]['line'].'</a></p>'; 
 		echo '<ol style="display:none;">'; 
