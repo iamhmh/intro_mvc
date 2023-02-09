@@ -18,6 +18,7 @@
                 <td><?= $v->name?></td>
                 <td>
                     <a href="<?php echo Router::url('admin/posts/edit/' . $v->id); ?>">Editer</a>
+                    <a href="<?php echo Router::url('admin/posts/delete/' . $v->id); ?>">Supprimer</a>
                 </td>
             </tr>
         <?php endforeach; ?>
