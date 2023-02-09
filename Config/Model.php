@@ -100,5 +100,9 @@ class Model{
 		return $res->count;  
 	}
 
-
+	public function delete($id)
+	{
+		$sql = "DELETE FROM DESIRE {$this->table} WHERE {$this->primaryKey} = $id";
+		$this->db->query($sql);
+	}
 }

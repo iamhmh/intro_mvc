@@ -50,4 +50,12 @@ class PostsController extends Controller{
 		$this->set($d); 
 	}
 
+	function admin_delete($id)
+	{
+		$this->loadModel('Post');
+		$this->Post->delete($id);
+		$this->Session->setFlash("Le contenu a bien été supprimé !");
+		$this->redirect('admin/posts/index');
+	}
+
 }
