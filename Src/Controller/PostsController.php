@@ -15,5 +15,26 @@ class PostsController extends Controller
         $d['page'] = ceil($d['total'] / $perPage);
         $this->set($d);
     }
-
+    function view($id, $slug)
+    {
+        //SELECT * FROM posts WHERE id = 5 AND online = 1 AND slug = 'premier-article';
+        // je charge le model post
+        $this->loadModel('Post');
+        // je vais créer ma requete SQL pour mon article
+        $conditions = ['id' => $id, 'slug' => 'premier-article', 'online' => 1];
+        $d['post'] = $this->Post->findFirst(array(
+            'conditions' => $conditions
+        ));
+        // J'envoie une erreur 404 en cas d'article introuvable
+        if(empty($d['post'])) 
+        {
+            $this->e404('Error');
+        }
+        // Si mes 2 slugs sont différents, je fais une redirection 301
+        if($slug != $d['post']->slug)
+        {
+            
+        }
+        $this->set($d);
+    }
 }
