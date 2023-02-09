@@ -21,7 +21,7 @@ class PostsController extends Controller{
 	function view($id,$slug){
 		$this->loadModel('Post');
 		$d['post']  = $this->Post->findFirst(array(
-			'fiel__DS__'	 => 'id,slug,content,name',
+			'fields'	 => 'id,slug,content,name',
 			'conditions' => array('online' => 1,'id'=>$id,'type'=>'post')
 		)); 
 		if(empty($d['post'])){
@@ -33,6 +33,12 @@ class PostsController extends Controller{
 		$this->set($d);
 	}
 
-
+	/**
+	 * Admin
+	 */
+	function admin_index()
+	{
+	
+	}
 
 }
