@@ -1,6 +1,6 @@
 <?php
-class Router{
-	
+class Router
+{
 
 	static $routes = array(); 
 	
@@ -94,6 +94,5 @@ class Router{
 			}
 		}
 		return __BASE_URL__ . '/' . $url;
-        //dd($url);
     }
 }

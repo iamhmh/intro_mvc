@@ -21,7 +21,7 @@ class PostsController extends Controller
         // je charge le model post
         $this->loadModel('Post');
         // je vais créer ma requete SQL pour mon article
-        $conditions = ['id' => $id, 'slug' => $slug, 'online' => 1];
+        $conditions = ['id' => $id, 'online' => 1, 'type' => 'post'];
         $d['post'] = $this->Post->findFirst(array(
             'fields' => 'id, slug, content, name',
             'conditions' => $conditions
@@ -34,7 +34,7 @@ class PostsController extends Controller
         // Si mes 2 slugs sont différents, je fais une redirection 301
         if($slug != $d['post']->slug)
         {
-            
+            $this->redirect("posts/view/id:$id/slug:" . $d['post']->slug, 301);
         }
         $this->set($d);
     }
