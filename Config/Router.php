@@ -41,7 +41,6 @@ class Router
 		{
 			$request->prefix = self::$prefixes[$params[0]];
 			array_shift($params);
-			//debug($params);
 		}
 		$request->controller = $params[0];
 		$request->action = isset($params[1]) ? $params[1] : 'index';
