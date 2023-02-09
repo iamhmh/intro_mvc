@@ -21,8 +21,9 @@ class PostsController extends Controller
         // je charge le model post
         $this->loadModel('Post');
         // je vais créer ma requete SQL pour mon article
-        $conditions = ['id' => $id, 'slug' => 'premier-article', 'online' => 1];
+        $conditions = ['id' => $id, 'slug' => $slug, 'online' => 1];
         $d['post'] = $this->Post->findFirst(array(
+            'fields' => 'id, slug, content, name',
             'conditions' => $conditions
         ));
         // J'envoie une erreur 404 en cas d'article introuvable
