@@ -38,7 +38,8 @@ class Dispatcher
 	function error($message)
 	{
 		$controller = new Controller($this->request); 
-		$controller->e404($message); 
+		$controller->e404($message);
+		$controller->Session = new Session();
 	}
 
 	/**
