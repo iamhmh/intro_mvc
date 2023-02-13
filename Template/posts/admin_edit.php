@@ -3,6 +3,6 @@
 </div>
 <form method="post" action="<?php echo Router::url('admin/posts/edit/'); ?>">
     <?php echo $this->Form->input('name', 'titre');?>
-    <?php echo $this->Form->input('content', 'contenu');?>
+    <?php echo $this->Form->input('content', 'contenu', ['type' => 'textarea']);?>
 </form>
 
