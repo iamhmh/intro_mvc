@@ -60,12 +60,17 @@ class PostsController extends Controller{
 	function admin_edit($id = null)
 	{
 		$this->loadModel('Post');
-		if($this->request->data)
+		$d['id'] = '';
+		if($this->Post->validates($this->request->data))
 		{
+			$this->request->data->type = 'post';
 			$this->Post->save($this->request->data);
+			$this->Session->setFlash("Le contenu a bien été modifié !");
+			$this->redirect('admin/posts/index');
 		}
-		$this->request->data = $this->Post->findFirst([
-			'conditions' => ['id' => $id],
-		]);
+		else
+		{
+			$this->Session->setFlash("Merci de corriger vos informations", "error");
+		}
 	}
 }

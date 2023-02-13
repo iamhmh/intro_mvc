@@ -8,8 +8,10 @@ class Model{
 	public $db; 
 	public $primaryKey = 'id'; 
 	public $id;
+	public $validate = [];
 
-	public function __construct(){
+	public function __construct()
+	{
 		// J'initialise qques variable
 		if($this->table === false){
 			$this->table = strtolower(get_class($this)).'s'; 
@@ -43,7 +45,8 @@ class Model{
 		 
 	}
 
-	public function find($req){
+	public function find($req)
+	{
 		$sql = 'SELECT ';
 
 		if(isset($req['fields'])){
@@ -89,11 +92,13 @@ class Model{
 		return $pre->fetchAll(PDO::FETCH_OBJ);
 	}
 
-	public function findFirst($req){
+	public function findFirst($req)
+	{
 		return current($this->find($req)); 
 	}
 
-	public function findCount($conditions){
+	public function findCount($conditions)
+	{
 		$res = $this->findFirst(array(
 			'fields' => 'COUNT('.$this->primaryKey.') as count',
 			'conditions' => $conditions
@@ -140,6 +145,31 @@ class Model{
 		if($action == 'insert')
 		{
 			$this->id = $this->db->lastInsertId();
+		}
+	}
+	public function validates($data)
+	{
+		$errors = [];
+		foreach($this->validate as $k => $v)
+		{
+			if(!isset($data->$k))
+			{
+				$errors[$k] = $v['message'];
+			}
+			else
+			{
+				if($v['rule'] == 'notEmpty')
+				{
+					if(empty($data->$k))
+					{
+						$errors[$k] = $v['message'];
+					}
+				}
+				elseif()
+				{
+
+				}
+			}
 		}
 	}
 }
