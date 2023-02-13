@@ -63,6 +63,5 @@ class PostsController extends Controller{
 		$this->request->data = $this->Post->findFirst([
 			'conditions' => ['id' => $id],
 		]);
-		
 	}
 }
