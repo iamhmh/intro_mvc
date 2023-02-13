@@ -134,5 +134,12 @@ class Model{
 			$sql = 'INSERT INTO '.$this->table.' SET '.implode(',',$fields);
 			$action = 'insert';
 		}
+		$pre = $this->db->prepare($sql);
+		$pre->execute($d);
+
+		if($action == 'insert')
+		{
+			$this->id = $this->db->lastInsertId();
+		}
 	}
 }
