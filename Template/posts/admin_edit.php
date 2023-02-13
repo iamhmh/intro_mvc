@@ -5,4 +5,3 @@
     <?php echo $this->Form->input('name', 'titre');?>
     <?php echo $this->Form->input('content', 'contenu', ['type' => 'textarea', 'row' => '5', 'col' => '10']);?>
 </form>
-
