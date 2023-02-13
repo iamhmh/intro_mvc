@@ -132,5 +132,9 @@ class Model{
 				$d[":$k"] = $v;
 			}
 		}
+		if(isset($data->$key) && !empty($data->$key))
+		{
+			$sql = 'UPDATE '.$this->table.' SET '.implode(',',$fields).' WHERE '.$key.'=:'.$key;
+		}
 	}
 }
