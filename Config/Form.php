@@ -3,7 +3,7 @@
 class Form 
 {
     public $controller;
-
+    public $errors;
 
 
     public function __construct($controller)
@@ -14,6 +14,13 @@ class Form
 
     public function input($name, $label, $options = [])
     {
+        $error = false;
+        $classError = '';
+        if(isset($this->errors[$name]))
+        {
+            $error = $this->errors[$name];
+            $classError = ' error ';
+        }
         if(!isset($this->controller->request->data->$name))
         {
             $value = '';

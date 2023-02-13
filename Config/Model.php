@@ -10,7 +10,6 @@ class Model{
 	public $id;
 	public $validate = [];
 	public $errors = [];
-	public $Form;
 
 	public function __construct()
 	{
