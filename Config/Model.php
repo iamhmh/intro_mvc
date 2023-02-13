@@ -7,6 +7,7 @@ class Model{
 	public $table = false; 
 	public $db; 
 	public $primaryKey = 'id'; 
+	public $id;
 
 	public function __construct(){
 		// J'initialise qques variable
@@ -107,16 +108,6 @@ class Model{
 	}
 	public function save($data)
 	{
-		// rentrer les données dans un tableau
-
-		//créer la requete sql
-
-		//ajouter des conditions pour l'update et l'insert
-
-		//executer la requete
-
-		//retourner l'id de l'insert
-
 		$key = $this->primaryKey;
 		$fields = [];
 		$d = [];
@@ -135,6 +126,13 @@ class Model{
 		if(isset($data->$key) && !empty($data->$key))
 		{
 			$sql = 'UPDATE '.$this->table.' SET '.implode(',',$fields).' WHERE '.$key.'=:'.$key;
+			$this->id = $data->$key;
+			$action = 'update';
+		}
+		else
+		{
+			$sql = 'INSERT INTO '.$this->table.' SET '.implode(',',$fields);
+			$action = 'insert';
 		}
 	}
 }
