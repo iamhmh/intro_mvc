@@ -47,7 +47,7 @@ class Model{
 
 		if(isset($req['fields'])){
 			if(is_array($req['fields'])){
-				$sql .= implode(', ',$$req['fields']);
+				$sql .= implode(', ',$req['fields']);
 			}else{
 				$sql .= $req['fields']; 
 			}
@@ -104,5 +104,24 @@ class Model{
 	{
 		$sql = "DELETE FROM {$this->table} WHERE {$this->primaryKey} = $id";
 		$this->db->query($sql);
+	}
+	public function save($data)
+	{
+		// rentrer les données dans un tableau
+
+		//créer la requete sql
+
+		//ajouter des conditions pour l'update et l'insert
+
+		//executer la requete
+
+		//retourner l'id de l'insert
+
+		$key = $this->primaryKey;
+		$data = [];
+		foreach($data as $k =>$v)
+		{
+			
+		}
 	}
 }

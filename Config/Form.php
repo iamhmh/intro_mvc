@@ -4,6 +4,8 @@ class Form
 {
     public $controller;
 
+
+
     public function __construct($controller)
     {
         $this->controller = $controller;
@@ -12,6 +14,17 @@ class Form
 
     public function input($name, $label, $options = [])
     {
+        if(!isset($this->controller->request->data->$name))
+        {
+            $value = '';
+        }else {
+            $value = $this->controller->request->data->$name;
+        }
+        if($label == 'hidden')
+        {
+            return '<input type="hidden" name="'.$name.'" value="'.$value.'">';
+        }
+
         $html = '<div class="clearfix">
                 <label for="input'.$name.'">'.$label.'</label>
                     <div class="input"> '; 

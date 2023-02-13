@@ -27,7 +27,7 @@ class Request{
 			{
 				$this->data->$k = $v;
 			}
-			debug($this->data);
+			//debug($this->data);
 		}
 	}
 }
