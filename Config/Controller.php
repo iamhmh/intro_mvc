@@ -96,7 +96,5 @@ class Controller{
 		}
 		header("Location: ".Router::url($url)); 
 	}
-
-
 }
 ?>
