@@ -10,7 +10,7 @@ class Session
         }
     }
 
-    public function setFlash($message, $type)
+    public function setFlash($message, $type = null)
     {
         $_SESSION['flash'] = [
             'message' => $message,
