@@ -49,6 +49,10 @@ class Dispatcher
 		$name = ucfirst($this->request->controller).'Controller'; 
 		$file = __ROOT__.__DS__.'Src'.__DS__. 'Controller'. __DS__. $name.'.php'; 
 		require $file; 
-		return new $name($this->request);  
+		$controller =  new $name($this->request);
+		// démarrer une session
+		$controller->Session = new Session();
+		// retourne le chargement du controlleur
+		return $controller;
 	}
 }

@@ -9,4 +9,17 @@ class Session
             session_start();
         }
     }
+
+    public function setFlash($message, $type)
+    {
+        $_SESSION['flash'] = [
+            'message' => $message,
+            'type' => $type
+        ];
+    }
+
+    public function flash()
+    {
+        
+    }
 }

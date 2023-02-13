@@ -12,9 +12,6 @@ class Conf
 			'password'	=> ''
 		)
 	);
-
-
-
 }
 Router::prefix('cockpit', 'admin');
 Router::connect('/','posts/index');
