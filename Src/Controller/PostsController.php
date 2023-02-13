@@ -47,7 +47,7 @@ class PostsController extends Controller{
 		));
 		$d['total'] = $this->Post->findCount($condition); 
 		$d['page'] = ceil($d['total'] / $perPage);
-		$this->set($d); 
+		$this->set($d);
 	}
 
 	function admin_delete($id)
