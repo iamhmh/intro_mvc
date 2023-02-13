@@ -7,7 +7,7 @@ class Form
     {
         $this->controller = $controller;
     }
-    public function input($name, $label, $options)
+    public function input($name, $label, $options = [])
     {
         $html = '<div class="clearfix">
                     <label for="input'.$name.'">'.$label.'</label>
@@ -22,6 +22,6 @@ class Form
         }
         $html .=    '</div>
                     </div>';
-        
+        return $html;
     }
 }
