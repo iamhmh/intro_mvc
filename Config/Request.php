@@ -5,6 +5,7 @@ class Request{
 	public $url; 	// URL appellé par l'utilisateur
 	public $page = 1;
 	public $prefix = '';
+	public $data = false;
 
 	function __construct()
 	{
@@ -18,6 +19,15 @@ class Request{
 					$this->page = round($_GET['page']); 
 				}
 			}
+		}
+		if(!empty($_POST))
+		{
+			$this->data = new stdClass();
+			foreach($_POST as $k => $v)
+			{
+				$this->data->$k = $v;
+			}
+			debug($this->data);
 		}
 	}
 
