@@ -30,6 +30,4 @@ class Request{
 			debug($this->data);
 		}
 	}
-
-
 }
