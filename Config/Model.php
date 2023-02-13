@@ -118,10 +118,19 @@ class Model{
 		//retourner l'id de l'insert
 
 		$key = $this->primaryKey;
-		$data = [];
+		$fields = [];
+		$d = [];
 		foreach($data as $k =>$v)
 		{
-			
+			if($k != $this->primaryKey)
+			{
+				$fields[] = "$k=:$k";
+				$d[":$k"] = $v;
+			}
+			elseif(!empty($v))
+			{
+				$d[":$k"] = $v;
+			}
 		}
 	}
 }
