@@ -9,6 +9,7 @@ class Model{
 	public $primaryKey = 'id'; 
 	public $id;
 	public $validate = [];
+	public $errors = [];
 
 	public function __construct()
 	{
@@ -165,11 +166,24 @@ class Model{
 						$errors[$k] = $v['message'];
 					}
 				}
-				elseif()
+				elseif(!preg_match('/^'.$v['rule'].'$/',$data->$k))
 				{
-
+					$errors[$k] = $v['message'];
 				}
 			}
+		}
+		$this->errors = $errors;
+		if(isset($this->Form))
+		{
+			$this->Form->errors = $errors;
+		}
+		if(empty($errors))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }
