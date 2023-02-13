@@ -57,12 +57,12 @@ class PostsController extends Controller{
 		$this->Session->setFlash("Le contenu a bien été supprimé !");
 		$this->redirect('admin/posts/index');
 	}
-	function admin_edit()
+	function admin_edit($id)
 	{
 		$this->loadModel('Post');
-		$d['post'] = $this->Post->findFirst([
-			'conditions' => ['id' => 5],
+		$this->request->data = $this->Post->findFirst([
+			'conditions' => ['id' => $id],
 		]);
-		$this->set($d);
+		
 	}
 }

@@ -9,11 +9,11 @@ class Form
     }
     public function input($name, $label)
     {
-        echo '<div class="clearfix">
-                <label for="input'.$name.'">'.$label.'</label>
-                <div class="input">
-                    <input type="text" name="'.$name.'" value="" id="input'.$name.'">
-                </div>
-            </div>';
+        return '<div class="clearfix">
+                    <label for="input'.$name.'">'.$label.'</label>
+                    <div class="input">
+                        <input type="text" name="'.$name.'" value="'.$this->controller->request->data->$name.'" id="input'.$name.'">
+                    </div>
+                </div>';
     }
 }
