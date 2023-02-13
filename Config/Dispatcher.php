@@ -38,8 +38,8 @@ class Dispatcher
 	function error($message)
 	{
 		$controller = new Controller($this->request); 
-		$controller->e404($message);
 		$controller->Session = new Session();
+		$controller->e404($message);
 	}
 
 	/**
@@ -53,6 +53,8 @@ class Dispatcher
 		$controller =  new $name($this->request);
 		// démarrer une session
 		$controller->Session = new Session();
+		// loader le formulaire
+		$controller->Form = new Form($controller);
 		// retourne le chargement du controlleur
 		return $controller;
 	}

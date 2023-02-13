@@ -1,5 +1,4 @@
 <div class="page-header">
-    Editer un article
     <h1><?php $total ?> Articles</h1>
 </div>
 
