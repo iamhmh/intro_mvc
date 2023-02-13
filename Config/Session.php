@@ -22,7 +22,7 @@ class Session
     {
         if(isset($_SESSION['flash']))
         {
-            return $_SESSION['flash']['message'];
+            return '<div class="alert alert-message"><p>'.$_SESSION['flash']['message'].'</p></div>';
         }
     }
 }
