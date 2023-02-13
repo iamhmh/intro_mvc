@@ -10,7 +10,7 @@ class Session
         }
     }
 
-    public function setFlash($message, $type = null)
+    public function setFlash($message, $type = 'success')
     {
         $_SESSION['flash'] = [
             'message' => $message,
@@ -20,9 +20,11 @@ class Session
 
     public function flash()
     {
-        if(isset($_SESSION['flash']))
+        if(isset($_SESSION['flash']['message']))
         {
-            return '<div class="alert alert-message"><p>'.$_SESSION['flash']['message'].'</p></div>';
+            $html = '<div class="alert-message ' . $_SESSION['flash']['type'] . '"><p>'.$_SESSION['flash']['message'].'</p></div>';
+            $_SESSION['flash'] = [];
+            return $html;
         }
     }
 }
