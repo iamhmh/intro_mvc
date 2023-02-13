@@ -23,7 +23,8 @@
         </div> 
  
         <div class="container" style="padding-top:60px;">
-        	<?php echo $content_for_layout; ?>
+            <?= $this->Session->flash(); ?>
+        	  <?php echo $content_for_layout; ?>
         </div>
          
     </body> 

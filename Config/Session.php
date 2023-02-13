@@ -20,6 +20,9 @@ class Session
 
     public function flash()
     {
-        
+        if(isset($_SESSION['flash']))
+        {
+            return $_SESSION['flash']['message'];
+        }
     }
 }
