@@ -6,7 +6,6 @@ class PostsController extends Controller{
 		$perPage = 1; 
 		$this->loadModel('Post');	
 		$condition = array('online' => 1,'type'=>'post'); 
-
 		$d['posts'] = $this->Post->find(array(
 			'conditions' => $condition,
 			'limit' => ($perPage*($this->request->page-1)).','.$perPage
