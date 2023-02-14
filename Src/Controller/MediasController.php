@@ -11,6 +11,10 @@ class MediasController extends Controller
             if(strpos($_FILES['file']['type'], 'image') !== false)
             {
                 $dir = __WEBROOT__ . __DS__ . 'img' . __DS__ . date('Y-m');
+                if(!file_exists($dir))
+                {
+                    mkdir($dir, 0777);
+                }
             }
         }
         $this->layout = 'modal';
