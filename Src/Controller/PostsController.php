@@ -76,5 +76,14 @@ class PostsController extends Controller{
 				$this->Session->setFlash("Merci de corriger vos informations ", 'error');
 			}
 		}
+		elseif($id)
+		{
+			$conditions = ['id' => $id];
+			$this->request->data = $this->Post->findFirst(array(
+				'conditions' => $conditions
+			));
+			$d['id'] = $id;
+		}
+		$this->set($d);
 	}
 }
