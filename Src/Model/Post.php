@@ -1,5 +1,5 @@
 <?php
-class Post extends Model{
-
+class Post extends Model
+{
 
 }

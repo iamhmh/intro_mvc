@@ -32,7 +32,7 @@ class Form
             return '<input type="hidden" name="'.$name.'" value="'.$value.'">';
         }
 
-        $html = '<div class="clearfix">
+        $html = '<div class="clearfix '.$classError.' " >
                 <label for="input'.$name.'">'.$label.'</label>
                     <div class="input"> '; 
 

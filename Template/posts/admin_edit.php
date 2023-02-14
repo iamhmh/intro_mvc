@@ -1,7 +1,7 @@
 <div class="page-header">
     <h1>Editer un article</h1>
 </div>
-<form method="post" action="<?php echo Router::url('admin/posts/edit/'); ?>">
+<form method="post" action="<?php echo Router::url('admin/posts/edit/'.$id); ?>">
     <?php echo $this->Form->input('name', 'Titre');?>
     <?php echo $this->Form->input('slug', 'slug');?>
     <?php echo $this->Form->input('id', 'hidden');?>

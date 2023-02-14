@@ -1,8 +1,6 @@
 <?php 
-class PagesController extends Controller{
-	
-
-
+class PagesController extends Controller
+{
 	function view($id){
 		$this->loadModel('Post');
 		$d['page']  = $this->Post->findFirst(array(
@@ -23,6 +21,4 @@ class PagesController extends Controller{
 			'conditions' => array('online' => 1,'type'=>'page')
 		));
 	}
-
-
 }

@@ -61,16 +61,20 @@ class PostsController extends Controller{
 	{
 		$this->loadModel('Post');
 		$d['id'] = '';
-		if($this->Post->validates($this->request->data))
+		if($this->request->data)
 		{
-			$this->request->data->type = 'post';
-			$this->Post->save($this->request->data);
-			$this->Session->setFlash("Le contenu a bien été modifié !");
-			$this->redirect('admin/posts/index');
-		}
-		else
-		{
-			$this->Session->setFlash("Merci de corriger vos informations", "error");
+			if($this->Post->validates($this->request->data))
+			{
+				$this->request->data->type = 'post';
+				$this->request->data->created = date('Y-m-d h:i:s');
+				$this->Post->save($this->request->data);
+				$this->Session->setFlash("La modification a bien été prise en compte !");
+				$this->redirect('admin/posts/index');
+			}
+			else
+			{
+				$this->Session->setFlash("Merci de corriger vos informations ", 'error');
+			}
 		}
 	}
 }
