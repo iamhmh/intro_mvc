@@ -32,7 +32,7 @@ class Form
 
         $html = '<div class="clearfix '.$classError.' " >
                 <label for="input'.$name.'">'.$label.'</label>
-                    <div class="input"> '; 
+                    <div class="input"> ';
 
         $attr = ' ';
 
