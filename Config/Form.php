@@ -5,13 +5,11 @@ class Form
     public $controller;
     public $errors;
 
-
     public function __construct($controller)
     {
         $this->controller = $controller;
         
     }
-
     public function input($name, $label, $options = [])
     {
         $error = false;

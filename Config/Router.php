@@ -100,7 +100,7 @@ class Router
 						$v['redir'] = str_replace(":$k",$w,$v['redir']); 
 					}
 				}
-				return __BASE_URL__.str_replace('//','/','/'.$v['redir']).$match['args']; 
+				//return __BASE_URL__.str_replace('//','/','/'.$v['redir']).$match['args']; 
 			}
 		}
 		foreach(self::$prefixes as $k=>$v)

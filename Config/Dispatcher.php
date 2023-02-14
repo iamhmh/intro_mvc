@@ -10,7 +10,8 @@ class Dispatcher
 	* Fonction principale du dispatcher
 	* Charge le controller en fonction du routing
 	**/
-	function __construct(){
+	function __construct()
+	{
 		$this->request = new Request(); 
 
 		Router::parse($this->request->url,$this->request); 
@@ -31,7 +32,6 @@ class Dispatcher
 		call_user_func_array(array($controller,$action),$this->request->params); 
 		$controller->render($action);
 	}
-
 	/**
 	* Permet de générer une page d'erreur en cas de problème au niveau du routing (page inexistante)
 	**/
@@ -41,7 +41,6 @@ class Dispatcher
 		$controller->Session = new Session();
 		$controller->e404($message);
 	}
-
 	/**
 	* Permet de charger le controller en fonction de la requête utilisateur
 	**/

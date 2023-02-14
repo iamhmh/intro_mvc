@@ -45,7 +45,6 @@ class Model{
 		
 		 
 	}
-
 	public function find($req)
 	{
 		$sql = 'SELECT ';
@@ -92,12 +91,10 @@ class Model{
 		$pre->execute(); 
 		return $pre->fetchAll(PDO::FETCH_OBJ);
 	}
-
 	public function findFirst($req)
 	{
 		return current($this->find($req)); 
 	}
-
 	public function findCount($conditions)
 	{
 		$res = $this->findFirst(array(
@@ -106,7 +103,6 @@ class Model{
 			));
 		return $res->count;  
 	}
-
 	public function delete($id)
 	{
 		$sql = "DELETE FROM {$this->table} WHERE {$this->primaryKey} = $id";
