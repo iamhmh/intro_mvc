@@ -17,7 +17,8 @@ class Controller{
 		if($request){
 			$this->request = $request; 	// On stock la request dans l'instance			
 		}
-		require 'Hook.php';
+		require __ROOT__ . __DS__ . 'Config' . __DS__ . 'Hook.php';
+		
 	}
 
 
