@@ -20,7 +20,7 @@ class Controller{
 			// démarrer une session
 			$this->Session = new Session();
 			// loader le formulaire
-			$this->Form = new Form($this);		
+			$this->Form = new Form($this);
 		}
 		require __ROOT__ . __DS__ . 'Config' . __DS__ . 'Hook.php';
 		
