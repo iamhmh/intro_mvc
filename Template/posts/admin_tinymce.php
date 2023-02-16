@@ -1,3 +1,4 @@
+<?php //debug($posts); ?>
 <ul>
     <?php foreach($posts as $k => $v): ?>
         <li>
