@@ -79,7 +79,7 @@ class PostsController extends Controller
 			}
 		}
 		$d['id'] = $id;
-		echo $d['id'];
+		//echo $d['id'];
 		if($this->request->data)
 		{
 			if($this->Post->validates($this->request->data))

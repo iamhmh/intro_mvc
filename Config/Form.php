@@ -65,6 +65,10 @@ class Form
         {
             $html .= ' <input type="file" name="'.$name.'" value="'.$value.'" id="input'.$name.'" '.$attr.'>';
         }
+        elseif($options['type'] == 'password')
+        {
+            $html .= ' <input type="password" name="'.$name.'" value="'.$value.'" id="input'.$name.'" '.$attr.'>';
+        }
         if($error)
         {
             $html .= ' <span class="help-inline"> ' .$error. ' </span>';
