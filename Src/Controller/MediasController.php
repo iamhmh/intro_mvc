@@ -18,7 +18,7 @@ class MediasController extends Controller
                 $this->Media->save(
                     array(
                         'name' => $this->request->data->name,
-                        'file' => date('Y-m-') . '/' . $_FILES['file']['name'],
+                        'file' => date('Y-m') . '/' . $_FILES['file']['name'],
                         'post_id' => $id,
                         'type' => 'img',
                     )
