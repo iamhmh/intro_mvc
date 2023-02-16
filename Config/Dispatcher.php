@@ -38,7 +38,6 @@ class Dispatcher
 	function error($message)
 	{
 		$controller = new Controller($this->request); 
-		$controller->Session = new Session();
 		$controller->e404($message);
 	}
 	/**
@@ -50,10 +49,6 @@ class Dispatcher
 		$file = __ROOT__.__DS__.'Src'.__DS__. 'Controller'. __DS__. $name.'.php'; 
 		require $file; 
 		$controller =  new $name($this->request);
-		// démarrer une session
-		$controller->Session = new Session();
-		// loader le formulaire
-		$controller->Form = new Form($controller);
 		// retourne le chargement du controlleur
 		return $controller;
 	}

@@ -16,7 +16,11 @@ class Controller{
 	function __construct($request = null)
 	{
 		if($request){
-			$this->request = $request; 	// On stock la request dans l'instance			
+			$this->request = $request; 	// On stock la request dans l'instance	
+			// démarrer une session
+			$this->Session = new Session();
+			// loader le formulaire
+			$this->Form = new Form($this);		
 		}
 		require __ROOT__ . __DS__ . 'Config' . __DS__ . 'Hook.php';
 		
