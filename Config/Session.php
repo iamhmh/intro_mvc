@@ -53,6 +53,7 @@ class Session
     }
     public function isLogged()
     {
+        debug($_SESSION);
         return isset($_SESSION['User']->role);
     }
 
