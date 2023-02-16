@@ -40,7 +40,7 @@
 
     function fileBrowser(field_name, url, type, win)
     {
-      alert(type);
+      //alert(type);
       if(type=='file'){
           var explorer = '<?php echo Router::url('admin/posts/tinymce'); ?>';
       }else{

@@ -2,7 +2,8 @@
 class PostsController extends Controller{
 	
 
-	function index(){
+	function index()
+	{
 		$perPage = 1; 
 		$this->loadModel('Post');	
 		$condition = array('online' => 1,'type'=>'post'); 
@@ -17,7 +18,8 @@ class PostsController extends Controller{
 		$this->set($d); 
 	}
 
-	function view($id,$slug){
+	function view($id,$slug)
+	{
 		$this->loadModel('Post');
 		$d['post']  = $this->Post->findFirst(array(
 			'fields'	 => 'id,slug,content,name',
@@ -31,7 +33,6 @@ class PostsController extends Controller{
 		}
 		$this->set($d);
 	}
-
 	/**
 	 * Admin
 	 */
@@ -83,6 +84,13 @@ class PostsController extends Controller{
 			));
 			$d['id'] = $id;
 		}
+		$this->set($d);
+	}
+	function admin_tinymce()
+	{
+		$this->loadModel('Post');
+		$this->layout = 'modal';
+		$d['posts'] = $this->Post->find();
 		$this->set($d);
 	}
 }
