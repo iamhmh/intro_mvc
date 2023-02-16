@@ -39,4 +39,15 @@ class MediasController extends Controller
         $d['post_id'] = $id;
         $this->set($d);
     }
+    function admin_delete($id)
+    {
+        $this->loadModel('Media');
+        $media = $this->Media->findFirst(array(
+            'conditions' => ['id' => $id]
+        ));
+        unlink(__WEBROOT__ . __DS__ . 'img' . __DS__ . $media->file);
+        $this->Media->delete($id);
+        $this->Session->setFlash('Votre image a bien été supprimée !');
+        $this->redirect('admin/medias/index/'. $media->post_id);
+    }
 }

@@ -18,7 +18,7 @@
                     <?php echo $v->name;?>
                 </td>
                 <td>
-                    <a href="">Supprimer</a>
+                    <a href="<?php echo Router::url('admin/medias/delete/' . $v->id);?>" onclick="return confirm('Voulez-vous coucher avec moi ce soir?')">Supprimer</a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -34,8 +34,6 @@
         <input type="submit" value="Envoyer" class="btn btn-primary">
     </div>
 </form>
-
-
 <script type="text/javascript" src="<?php echo Router::webroot('js/tinymce/tiny_mce_popup.js'); ?>"></script>
 <script type="text/javascript">
     let FileBrowserDialogue = {
