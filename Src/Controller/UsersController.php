@@ -5,6 +5,7 @@ class UsersController extends Controller
     //fonction pour se logger
     function login()
     {
+        //debug($this->Session->read('User'));
         if($this->request->data)
         {
             $data = $this->request->data;
@@ -18,14 +19,21 @@ class UsersController extends Controller
             ));
             if(!empty($user))
             {
-                //debug($user);
-                $_SESSION['User'] = $user;
+                $this->Session->write('User', $user);                
             }
+            $this->request->data->password = '';
+        }
+        if($this->Session->isLogged())
+        {   
+            $this->redirect('cockpit');
         }
     }
+
     //fonction delogger
     function logout()
     {
-
+        unset($_SESSION['User']);
+        $this->Session->setFlash('Vous êtes déconnectés !');
+        $this->redirect('/');
     }
 }
