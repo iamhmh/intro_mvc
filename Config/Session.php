@@ -53,7 +53,7 @@ class Session
     }
     public function isLogged()
     {
-        return isset($_SESSION['User']->role);
+        return isset($_SESSION['User']->id);
     }
 
     public function user($key)

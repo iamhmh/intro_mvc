@@ -25,7 +25,10 @@ class UsersController extends Controller
         }
         if($this->Session->isLogged())
         {   
-            if($this->Session->User('role') == 'admin')
+            debug($this->Session);
+            
+            
+            if($this->Session->user('role') == 'admin')
             {
                 $this->redirect('cockpit');
             }
@@ -33,6 +36,7 @@ class UsersController extends Controller
             {
                 $this->redirect('');
             }
+
         }
     }
     //fonction delogger
