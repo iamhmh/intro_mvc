@@ -25,10 +25,16 @@ class UsersController extends Controller
         }
         if($this->Session->isLogged())
         {   
-            $this->redirect('cockpit');
+            if($this->Session->User('role') == 'admin')
+            {
+                $this->redirect('cockpit');
+            }
+            else
+            {
+                $this->redirect('');
+            }
         }
     }
-
     //fonction delogger
     function logout()
     {
