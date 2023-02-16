@@ -22,7 +22,8 @@ class Form
         if(!isset($this->controller->request->data->$name))
         {
             $value = '';
-        }else {
+        }else 
+        {
             $value = $this->controller->request->data->$name;
         }
         if($label == 'hidden')
@@ -48,12 +49,12 @@ class Form
         // input simple
         if(!isset($options['type'])) 
         {
-            $html .= ' <input type="text" name="'.$name.'" value="'.$this->controller->request->data->$name.'" id="input'.$name.'" '.$attr.'>';
+            $html .= ' <input type="text" name="'.$name.'" value="'.$value.'" id="input'.$name.'" '.$attr.'>';
         }      
         // text area
         elseif($options['type'] == 'textarea')
         {
-            $html .= ' <textarea type="" name="'.$name.'" id="input'.$name.'" '.$attr.'>'.$this->controller->request->data->$name.'</textarea>';
+            $html .= ' <textarea type="" name="'.$name.'" id="input'.$name.'" '.$attr.'>'.$value.'</textarea>';
         } 
         elseif($options['type'] == 'checkbox')
         {
@@ -62,11 +63,15 @@ class Form
         }   
         elseif($options['type'] == 'file')
         {
-            $html .= ' <input type="file" name="'.$name.'">';
+            $html .= ' <input type="file" name="'.$name.'" value="'.$value.'" id="input'.$name.'" '.$attr.'>';
+        }
+        if($error)
+        {
+            $html .= ' <span class="help-inline"> ' .$error. ' </span>';
         }  
         $html .= '  </div>
-                    </div>';   
-                    
+                    </div>';
         return $html;
     }
 }
+//Tout le form.php peut se retrouver dans le fichier Model Contact du projet de grp (sauf s'il y a d'autres forms sur le site)

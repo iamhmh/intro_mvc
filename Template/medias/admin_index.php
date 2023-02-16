@@ -11,8 +11,8 @@
     <h1>Ajouter une image</h1>
 </div>
 <form action="<?php Router::url('admin/medias/index/' . $post_id);?>" method="post" enctype="multipart/form-data">
-        <?php $this->Form->input('file', 'Image', ['type' => 'file']); ?>
-        <?php $this->Form->input('name', 'Titre'); ?>
+        <?php echo $this->Form->input('file', 'Image', ['type' => 'file']); ?>
+        <?php echo $this->Form->input('name', 'Titre'); ?>
     <div class="actions">
         <input type="submit" value="Envoyer" class="btn btn-primary">
     </div>
