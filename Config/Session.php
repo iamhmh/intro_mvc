@@ -55,4 +55,20 @@ class Session
     {
         return isset($_SESSION['User']->id);
     }
+
+    public function user($key)
+    {
+        if($this->read('User'))
+        {
+            if(isset($this->read('User')->$key))
+            {
+                return $this->read('User')->$key;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
 }
