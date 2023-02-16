@@ -43,7 +43,7 @@ class Model
 			}
 		}
 	}
-	public function find($req)
+	public function find($req = [])
 	{
 		$sql = 'SELECT ';
 
