@@ -43,6 +43,7 @@ class UsersController extends Controller
     function logout()
     {
         unset($_SESSION['User']);
+        session_destroy();
         $this->Session->setFlash('Vous êtes déconnectés !');
         $this->redirect('/');
     }

@@ -46,7 +46,11 @@ class Dispatcher
 	function loadController()
 	{
 		$name = ucfirst($this->request->controller).'Controller'; 
-		$file = __ROOT__.__DS__.'Src'.__DS__. 'Controller'. __DS__. $name.'.php'; 
+		$file = __ROOT__.__DS__.'Src'.__DS__. 'Controller'. __DS__. $name.'.php';
+		if(!file_exists($file))
+		{
+			$this->error('Le controlleur '.$this->request->controller.' n\'existe pas !');
+		}
 		require $file; 
 		$controller =  new $name($this->request);
 		// retourne le chargement du controlleur
