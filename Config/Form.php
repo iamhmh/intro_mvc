@@ -56,10 +56,14 @@ class Form
             $html .= ' <textarea type="" name="'.$name.'" id="input'.$name.'" '.$attr.'>'.$this->controller->request->data->$name.'</textarea>';
         } 
         elseif($options['type'] == 'checkbox')
-            {
-                $html .= '<input type="hidden" name="'.$name.'" value="0"> 
+        {
+            $html .= '<input type="hidden" name="'.$name.'" value="0"> 
                           <input type="checkbox" name="'.$name.'" value="1" '.(empty($value)? '' : 'checked').'>';
-            }    
+        }   
+        elseif($options['type'] == 'file')
+        {
+            $html .= ' <input type="file" name="'.$name.'">';
+        }  
         $html .= '  </div>
                     </div>';   
                     

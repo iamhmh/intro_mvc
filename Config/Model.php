@@ -1,6 +1,6 @@
 <?php
-class Model{
-	
+class Model
+{
 	static $connections = array(); 
 
 	public $conf = 'default';
@@ -42,8 +42,6 @@ class Model{
 				die('Impossible de se connecter à la base de donnée'); 
 			}
 		}
-		
-		 
 	}
 	public function find($req)
 	{
