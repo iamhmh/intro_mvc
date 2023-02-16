@@ -45,7 +45,7 @@
         {
             let win = tinyMCEPopup.getWindowArg("window");
             win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = URL;
-            if(typeof(win.ImageDialog) != undefined)
+            if(typeof(win.ImageDialog) != 'undefined')
             {
                 if(win.ImageDialog.getImageData)
                 {
