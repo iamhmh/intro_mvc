@@ -17,9 +17,12 @@
         },
         sendURL:function(URL)
         {
+            console.log(URL);
             let win = tinyMCEPopup.getWindowArg("window");
+            console.log(win);
             win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = URL;
-            if(typeof(win.ImageDialog) != undefined)
+            console.log(URL);
+            if(typeof(win.ImageDialog) != 'undefined')
             {
                 if(win.ImageDialog.getImageData)
                 {
