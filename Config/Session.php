@@ -27,4 +27,9 @@ class Session
             return $html;
         }
     }
+
+    public function write($key, $value)
+    {
+        
+    }
 }
