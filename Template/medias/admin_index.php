@@ -6,6 +6,23 @@
             <th>Action</th>
         </tr>
     </thead>
+    <tbody>
+        <?php foreach($images as $k => $v): ?>
+            <tr>
+                <td>
+                    <a href="">
+                        <img src="<?php echo Router::webroot('img/' . $v->file);?>" height="50">
+                    </a>
+                </td>
+                <td>
+                    <?php echo $v->name;?>
+                </td>
+                <td>
+                    <a href="">Supprimer</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
 </table>
 <div class="page-header">
     <h1>Ajouter une image</h1>
