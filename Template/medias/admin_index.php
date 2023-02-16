@@ -10,7 +10,7 @@
         <?php foreach($images as $k => $v): ?>
             <tr>
                 <td>
-                    <a href="">
+                    <a href="#" onclick="FileBrowserDialogue.sendURL('<?php echo Router::webroot('img/' . $v->file);?>')">
                         <img src="<?php echo Router::webroot('img/' . $v->file);?>" height="50">
                     </a>
                 </td>
@@ -34,20 +34,32 @@
         <input type="submit" value="Envoyer" class="btn btn-primary">
     </div>
 </form>
-<!--
-<script type="text/javascript" src="<?php //echo Router::webroot('js/tinymce/tiny_mce.js'); ?>"></script>
-<script type="text/javascript" src="<?php //echo Router::webroot('js/tinymce/tiny_mce_popup.js'); ?>"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="<?php echo Router::webroot('js/tinymce/tiny_mce_popup.js'); ?>"></script>
 <script type="text/javascript">
+    let FileBrowserDialogue = {
+        init:function()
+        {
+            //ici je peux initialiser mes propres conditions au chargement
+        },
+        sendURL:function(URL)
+        {
+            let win = tinyMCEPopup.getWindowArg("window");
+            win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = URL;
+            if(typeof(win.ImageDialog) != undefined)
+            {
+                if(win.ImageDialog.getImageData)
+                {
+                    win.ImageDialog.getImageData();
+                }
+                if(win.ImageDialog.showPreviewImage)
+                {
+                    win.ImageDialog.showPreviewImage(URL);
+                }
+            }
+            tinyMCEPopup.close();
+        }
+    };
+    tinyMCEPopup.onInit.add(FileBrowserDialogue.init, FileBrowserDialogue);
 </script>
--Je fais appel au popup de tinymce grace au javascript tiny_mce_popup.js
--Je vais créer une boite de dialogue pour aller chercher mes images sur l'ordinateur
--je vais initialiser mes fonctions 
--J'envoie l'url de téléchargement
--Je vais prendre la value de l'input de mon url
--Je vais prendre les dimensions de l'image en width et height
--Je vais mets mon image en preview si nécessaire
--Je vais fermer la pop-up de tiny_mce
--J'envoie mes données pour l'upload et l'envoi en base de donnée
-tiny_mce_popup.onInit.add(FileBrowerDialog.Init, FileBrowerDialog)
--->
