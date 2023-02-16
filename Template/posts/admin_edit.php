@@ -38,7 +38,9 @@
         file_browser_callback : 'fileBrowser'
     });
 
-    function fileBrowser(field_name, url, type, win){
+    function fileBrowser(field_name, url, type, win)
+    {
+      alert(type);
       if(type=='file'){
           var explorer = '<?php echo Router::url('admin/posts/tinymce'); ?>';
       }else{
