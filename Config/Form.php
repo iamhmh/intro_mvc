@@ -54,7 +54,7 @@ class Form
         // text area
         elseif($options['type'] == 'textarea')
         {
-            $html .= ' <textarea type="" name="'.$name.'" id="input'.$name.'" '.$attr.'>'.$value.'</textarea>';
+            $html .= ' <textarea name="'.$name.'" id="input'.$name.'" '.$attr.'>'.$value.'</textarea>';
         } 
         elseif($options['type'] == 'checkbox')
         {

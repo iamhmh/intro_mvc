@@ -14,7 +14,7 @@ class MediasController extends Controller
                 {
                     mkdir($dir, 0777);
                 }
-                move_uploaded_file($_FILES['file']['tmpname'], $dir . __DS__ . $_FILES['file']['name']);
+                move_uploaded_file($_FILES['file']['tmp_name'], $dir . __DS__ . $_FILES['file']['name']);
                 $this->Media->save(
                     array(
                         'name' => $this->request->data->name,
